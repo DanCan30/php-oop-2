@@ -25,6 +25,7 @@
         private function setProductStock($_stock) {
             $this->stock = $_stock;
         }
+
     }
 
 ?>
