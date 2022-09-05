@@ -11,17 +11,17 @@
         protected string $email;
         protected string $phoneNumber;
         protected string $address;
-        protected bool $isRegistered;
+        protected bool $isRegistered = false;
         protected int $discount = 0;
         protected array $animalsOwned = [];
 
-        public function __construct($_name, $_surname, $_cardNumber, $_cardExpirationDate) {
+        public function __construct($_name, $_surname, $_cardNumber, $_cardExpirationDate, ...$_animals) {
             $this->setName($_name);
             $this->setSurname($_surname);
             $this->setCardNumber($_cardNumber);
             $this->setCardExpirationDate($_cardExpirationDate);
             $this->isCardValid();
-            // $this->isRegistered();
+            $this->addAnimal($_animals);
         }
 
         // Setter
@@ -59,20 +59,17 @@
             }
         }
 
-        public function setEmail($_email) {
+        public function setUserDatas($_email, $_phoneNumber, $_address) {
             if(strpos($_email, "@") && strpos($_email, ".")) {
                 $this->email = $_email;
-            }
-        }
-        
-        public function setPhoneNumber($_phoneNumber) {
+            };
+            
             if(strlen($_phoneNumber) === 10) {
                 $this->phoneNumber = $_phoneNumber;
-            }
-        }
-        
-        public function setAddress($_address) {
+            };
+
             $this->address = $_address;
+
         }
 
         public function isRegistered() {
@@ -83,7 +80,10 @@
                 $this->isRegistered = false;
             }
         }
-        
+
+        private function addAnimal($animal) {
+            $this->animalsOwned = array_merge($this->animalsOwned, $animal);
+        }
         
     }
 
