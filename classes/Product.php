@@ -14,18 +14,16 @@
 
         // Setter
 
-        private function setProductName($name) {
-            $this->name = ucwords($name);
+        private function setProductName($_name) {
+            $this->name = ucwords($_name);
         }
         
-        private function setProductPrice($price) {
-            $this->price = number_format($price, 2);
+        private function setProductPrice($_price) {
+            $this->price = number_format($_price, 2);
         }
         
-        private function setProductStock($stock) {
-            if(is_int($stock)) {
-                $this->stock = $stock;
-            }
+        private function setProductStock($_stock) {
+            $this->stock = $_stock;
         }
     }
 

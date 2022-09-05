@@ -5,7 +5,7 @@
     class Food extends Product {
 
         protected string $forWhichAnimal;
-        protected string $expirationDate_DD_MM_YYYY;
+        protected string $expirationDate;
         protected float $weight;
         protected array $allergens = [];
 
@@ -25,8 +25,9 @@
             $this->forWhichAnimal = $animalType;
         }
 
-        private function setExpirationDate($date) {
-            $this->expirationDate_DD_MM_YYYY = str_replace(["-", "_"], "/", $date);
+        private function setExpirationDate($_date) {
+            $timestamp = strtotime($_date);
+            $this->expirationDate = date("d-m-Y", $timestamp);
         }
 
         private function setWeight($_weight) {
