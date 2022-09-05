@@ -23,7 +23,7 @@
         }
 
         private function setDimension($_dimension) {
-            $this->dimension = $_dimension;
+            $this->dimension = strtoupper($_dimension);
         }
 
         private function isItWaterproof($response) {
